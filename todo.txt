@@ -1,0 +1,6 @@
+List of issues that need to be fixed
+
+
+# make a function that reads out all nessecary varialbes from netcdf for an array and return it in a decent format
+
+# make individual plottiong and statistics for each variable

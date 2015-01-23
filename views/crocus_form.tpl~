@@ -1,0 +1,15 @@
+<h2> Test heading </h2>
+
+ <form>
+	 <fieldset>
+	    <legend>Selecting elements</legend>
+	    <p>
+	      <label>Velg region</label>
+	      <select id = "regionList">
+		% for region in region_list:
+		<option value = "{{ region }}">{{ region }}</option>
+		% end
+	      </select>
+	    </p>
+	  </fieldset>
+ </form>
