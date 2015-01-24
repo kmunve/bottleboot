@@ -1,25 +1,14 @@
-<% """
-form-action refers to the url extension in bottle_app.py
-
-selsct id refers to the name in request.forms.get('region') in bottle_app.py
-
-
-""" %>
-
- <form action="/region_submit" method="post">
-	 <fieldset>
-	    <legend>Selecting elements</legend>
-	    <p>
-	      <label>Velg region</label>
-	      <select id = "region">
-		% for region in region_list:
-		<option value = "{{ region }}">{{ region }}</option>
-		% end
-	      </select>
-	    </p>
-	  </fieldset>
-% """The submit button needs to be in side the form tag"""
-<p>
-	  <input type="SUBMIT" value="Velg"></input>
-	  </p>
- </form>
+<form action="/region_submit" method="post">
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Velg varslingsregion
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    % for region in region_list:
+    <li><input name="region" class="form-control" type="submit" value="{{region}}"></input></li>
+    % end
+    <li class="divider"></li>
+  </ul>
+</div>
+</form>

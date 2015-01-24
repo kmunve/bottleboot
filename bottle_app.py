@@ -1,5 +1,5 @@
 # A very simple Bottle Hello World app for you to get started with...
-from bottle import default_app, route, get, post, request, template, static_file, debug #, TEMPLATE_PATH
+from bottle import default_app, run, route, get, post, request, template, static_file, debug #, TEMPLATE_PATH
 from html_template import WeatherParameter
 import crocus
 
@@ -81,6 +81,7 @@ def region_submit():
     print region
     print crocus.station_dict.values()
     station_list = crocus.station_dict[region]
+    print station_list, "after"
     region_list = crocus.station_dict.keys()
 
     crocus_form = template('crocus_form', region_list=region_list)
@@ -98,5 +99,8 @@ def region_submit():
     #else:
     #    return "<p>Login failed</p>"
 
-application = default_app()
+# Uncomment when running on pythonanywhere
+# application = default_app()
 
+# Uncomment when running locally
+run(host='localhost', port=8080)

@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="no-nb">
 
-<head>
-    <LINK href="http://karsten.pythonanywhere.com/views/flatly.min.css" rel="stylesheet" type="text/css">
+    <head>
+        <LINK href="http://karsten.pythonanywhere.com/views/journal.css" rel="stylesheet" type="text/css">
+        <style>
+            body {
+                margin: 0;
+                padding-top: 70px;
+            }
+        </style>
+    </head>
 
-</head>
+    <body>
 
-<body>
+        <div class="col-lg-11">
 
-<div class="col-lg-11">
+            <div class="col-lg-11">
 
-<p>
+                <div class="btn-group">
+                    <!-- Here goes the selection form  -->
+                    {{!crocus_form}}
+                </div>
 
-<div class="btn-group">
-<!-- Here goes the selection form  -->
-{{!crocus_form}}
-</div>
 
-</p>
 
-<p>
 
-<!-- Here goes the result -->
-{{!crocus_result}}
-</p>
 
-</div>
+                <!-- Here goes the result -->
+                {{!crocus_result}}
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://karsten.pythonanywhere.com/views/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-</body>
+            </div>
+
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="http://karsten.pythonanywhere.com/views/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    </body>
 </html>
