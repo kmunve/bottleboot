@@ -27,8 +27,9 @@
 
 
                 <!-- Here goes the result -->
-                {{!crocus_result}}
-
+                % for result in crocus_result:
+                {{!result}}
+                % end
 
             </div>
 

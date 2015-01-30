@@ -1,11 +1,16 @@
 import ftplib
+import json
 
 ftp_pre = 'ftp://'
 ftp_met = 'ftp.met.no'
 xgeo_dir = '/users/dagrunvs/xgeo/'
 
-# Dictionary containing station_id per region
-station_dict = {'Romsdal': [89920, 86070], 'Hallingdal': [54710, 25630, 25830]}
+
+def read_station_list():
+    fid = open("./resources/station_list.js", "r")
+    station_dict = json.load(fid)
+    fid.close()
+    return station_dict
 
 
 def get_ftp_content():
@@ -46,8 +51,15 @@ def get_img_urls(files, station_id):
     img_density = [s for s in station_files if 'DENSITY' in s][0]
     url_density = "{0}{1}".format(base_url, img_density)
 
+    # Retrieve LWC plot
+    img_lwc = [s for s in station_files if 'LIQUID_WATER_CONTENT' in s][0]
+    url_lwc = "{0}{1}".format(base_url, img_lwc)
 
-    return url_vertprofile, url_snowgraintype, url_density
+    # Retrieve temperature plot
+    img_temperature = [s for s in station_files if 'TEMPERATURE' in s][0]
+    url_temperature = "{0}{1}".format(base_url, img_temperature)
+
+    return url_vertprofile, url_snowgraintype, url_density, url_lwc, url_temperature
 
 
 if __name__ == "__main__":

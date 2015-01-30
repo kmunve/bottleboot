@@ -69,7 +69,8 @@ def crocus_html():
 
 @get('/form_test') # or @route('/login')
 def region_form():
-    region_list = crocus.station_dict.keys()
+    station_dict = crocus.read_station_list()
+    region_list = station_dict.keys()
     crocus_form = template('crocus_form', region_list=region_list)
     html = template('crocus_main', crocus_form=crocus_form, crocus_result='')
     return html
@@ -79,17 +80,18 @@ def region_form():
 def region_submit():
     region = request.forms.get('region')
     print region
-    print crocus.station_dict.values()
-    station_list = crocus.station_dict[region]
-    print station_list, "after"
-    region_list = crocus.station_dict.keys()
+    station_dict = crocus.read_station_list()
+    #print station_list, "after"
+    region_list = station_dict.keys()
 
     crocus_form = template('crocus_form', region_list=region_list)
 
     img_files = crocus.get_ftp_content()
-    url_vertprofile, url_snowgraintype, url_density = crocus.get_img_urls(img_files, crocus.station_dict[region][0])
+    crocus_result = []
+    for station_id in station_dict[region]:
+        url_vertprofile, url_snowgraintype, url_density, url_lwc, url_temperature = crocus.get_img_urls(img_files, station_id)
 
-    crocus_result = template('crocus_result', station_list=station_list, url_vertprofile=url_vertprofile, url_snowgraintype=url_snowgraintype, url_density=url_density)
+        crocus_result.append(template('crocus_result', station=station_id, url_vertprofile=url_vertprofile, url_snowgraintype=url_snowgraintype, url_density=url_density, url_lwc=url_lwc, url_temperature=url_temperature))
 
     html = template('crocus_main', crocus_form=crocus_form, crocus_result=crocus_result)
 
