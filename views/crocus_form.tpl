@@ -2,7 +2,7 @@
 
 <div class="row" id="crocus_form">
 
-<form action="/region_submit" method="post">
+<form action="/crocus/model" method="post">
 <div class="btn-group">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
     Velg varslingsregion

@@ -51,16 +51,17 @@ def danger_level_html():
     return html
 
 
-@get('/crocus') # or @route('/login')
+@route('/crocus/')
+@get('/crocus/model')
 def region_form():
     station_dict = crocus.read_station_list()
     region_list = station_dict.keys()
     crocus_form = template('crocus_form', region_list=region_list)
-    html = template('crocus_main', crocus_form=crocus_form, crocus_result='')
+    html = template('crocus_main', crocus_page=crocus_form)
     return html
 
 
-@post('/region_submit') # or @route('/login', method='POST')
+@post('/crocus/model') # or @route('/login', method='POST')
 def region_submit():
     region = request.forms.get('region')
     station_dict = crocus.read_station_list()
@@ -75,13 +76,22 @@ def region_submit():
 
         crocus_result.append(template('crocus_result', station=station_id, url_vertprofile=url_vertprofile, url_snowgraintype=url_snowgraintype, url_density=url_density, url_lwc=url_lwc, url_temperature=url_temperature))
 
-    html = template('crocus_main', crocus_form=crocus_form, crocus_result=crocus_result)
+    crocus_results = ""
+    for result in crocus_result:
+        crocus_results += u"<p>{0}</p>".format(result)
+
+    crocus_page = u"<p>{0}</p>{1}".format(crocus_form, crocus_results)
+    html = template('crocus_main', crocus_page=crocus_page)
 
     return html
-    #if check_login(name, password):
-    #    return "<p>Your login was correct</p>"
-    #else:
-    #    return "<p>Login failed</p>"
+
+
+@route('/crocus/help')
+def crocus_help():
+
+    crocus_page = template('crocus_help')
+    html = template('crocus_main', crocus_page=crocus_page)
+    return html
 
 # Uncomment when running on pythonanywhere
 # application = default_app()

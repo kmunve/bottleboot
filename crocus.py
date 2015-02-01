@@ -1,7 +1,6 @@
 import ftplib
 import json
 import os
-#import glob
 
 
 def read_station_list():
@@ -46,16 +45,15 @@ def get_img_urls(station_id):
 
     """
     # Read media folder content
-    # files = glob.glob(r".\media\m_crocus\*.jpg")
     files = os.listdir(r".\media\m_crocus")
-    print files
+
     # Compile main url
     base_url = r"http://karsten.pythonanywhere.com/media/m_crocus/"
 
     # Convert station_id to String
     station_id = str(station_id)
 
-    # Find all filenames containing the station_id
+    # Find all file names containing the station_id
     station_files = [s for s in files if station_id in s]
 
     # Retrieve vertical profile plot
