@@ -13,6 +13,7 @@
 
 <body>
 
+<div class="container-fluid">
 <div class="col-lg-8">
 
 <p>
@@ -28,8 +29,7 @@
 	% for region in region_list:
 	<li><a href="#{{ region }}">{{ region }}</a></li>
 	%end
-	<li class="divider"></li>
-	<li><a href="#">Separated link</a></li>
+
       </ul>
     </div>
 
@@ -64,5 +64,6 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://karsten.pythonanywhere.com/views/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+</div>
 </body>
 </html>

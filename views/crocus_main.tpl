@@ -2,7 +2,7 @@
 <html lang="no-nb">
 
     <head>
-        <LINK href="http://karsten.pythonanywhere.com/views/journal.css" rel="stylesheet" type="text/css">
+        <LINK href="http://karsten.pythonanywhere.com/views/simplex.css" rel="stylesheet" type="text/css">
         <style>
             body {
                 margin: 0;
@@ -13,27 +13,34 @@
 
     <body>
 
-        <div class="col-lg-11">
+        <div class="container">
 
-            <div class="col-lg-11">
 
-                <div class="btn-group">
-                    <!-- Here goes the selection form  -->
-                    {{!crocus_form}}
+            <nav class="navbar navbar-default">
+              %#<div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+
                 </div>
 
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="model">Snødekkemodell <span class="sr-only">(current)</span></a></li>
+                    <li class="disabled"><a href="map">Kart</a></li>
+                    <li><a href="help">Hjelp</a></li>
+                    <li class="disabled"><a href="feedback">Tilbakemeldinger</a></li>
+                </ul>
 
+              %#</div><!-- /.container-fluid -->
+            </nav>
 
-
-
-                <!-- Here goes the result -->
-                % for result in crocus_result:
-                {{!result}}
-                % end
-
-            </div>
+             <div class="row col-md-12">
+                 {{ !crocus_page }}
+             </div>
 
         </div>
+
+
+
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

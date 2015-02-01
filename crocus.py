@@ -1,9 +1,6 @@
 import ftplib
 import json
-
-ftp_pre = 'ftp://'
-ftp_met = 'ftp.met.no'
-xgeo_dir = '/users/dagrunvs/xgeo/'
+import os
 
 
 def read_station_list():
@@ -15,31 +12,52 @@ def read_station_list():
 
 def get_ftp_content():
 
+    ftp_pre = 'ftp://'
+    ftp_met = 'ftp.met.no'
+    xgeo_dir = '/users/dagrunvs/xgeo/'
+
     ftp = ftplib.FTP(ftp_met) # connect to host, default port
     ftp.login()
     ftp.cwd(xgeo_dir)
     files = ftp.nlst() # list directory contents
+
+    print files
+
+    for filename in files:
+        print "Assessing file: ", filename,
+        try:
+            if filename[-4:] == ".jpg":
+                print "Downloading ", filename
+                local_filename = os.path.join(r'.\media\m_crocus', filename)
+                fid = open(local_filename, 'wb')
+                ftp.retrbinary('RETR '+ filename, fid.write)
+                fid.close()
+        except IndexError:
+            pass
+
     ftp.quit()
 
-    return files
 
-def get_img_urls(files, station_id):
+def get_img_urls(station_id):
     """
     Split file name and retrieve stationd id and station name and use it as a heading
     Change web-page such that only the sations within a region are shown when chosen from drop-down menu.
 
     """
+    # Read media folder content
+    files = os.listdir(r".\media\m_crocus")
+
     # Compile main url
-    base_url = "{0}{1}{2}".format(ftp_pre, ftp_met, xgeo_dir)
+    base_url = r"http://karsten.pythonanywhere.com/media/m_crocus/"
 
     # Convert station_id to String
     station_id = str(station_id)
 
-    # Find all filenames containing the station_id
+    # Find all file names containing the station_id
     station_files = [s for s in files if station_id in s]
 
-    # Retrieve verticale profile plot
-    # Currently (2015-01-18) there are two vert profile files in the folder - therefore the '.'!
+    # Retrieve vertical profile plot
+    # Currently (2015-01-18) there are two vertical profile files in the folder - therefore the '.'!
     img_vertprofile = [s for s in station_files if 'VERTICAL_PROFILE.' in s][0]
     url_vertprofile = "{0}{1}".format(base_url, img_vertprofile)
 
@@ -63,6 +81,6 @@ def get_img_urls(files, station_id):
 
 
 if __name__ == "__main__":
-    img_files = get_ftp_content()
-    vp, sgt, den = get_img_urls(img_files, 61410)
-    print vp, sgt, den
+    #img_files = get_ftp_content()
+    vp, sgt, den, lwc, temp = get_img_urls(61410)
+    print vp, sgt, den, lwc, temp
