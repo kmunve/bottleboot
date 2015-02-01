@@ -9,11 +9,13 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
+      <div class="input-group">
     % for region in region_list:
     <li role="presentation">
         <input name="region" class="form-control" type="submit" value="{{region}}">
     </li>
     % end
+      </div>
   </ul>
 </div>
 </form>

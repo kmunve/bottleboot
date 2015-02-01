@@ -16,28 +16,28 @@
 
               <div class="col-md-6">
                 <ul class="nav nav-tabs">
-                  <li class="active"><a aria-expanded="true" href="#graintype" data-toggle="tab">Kornform</a></li>
-                  <li class=""><a aria-expanded="false" href="#density" data-toggle="tab">Tetthet</a></li>
+                  <li class="active"><a aria-expanded="true" href="#graintype{{ station }}" data-toggle="tab">Kornform</a></li>
+                  <li class=""><a aria-expanded="false" href="#density{{ station }}" data-toggle="tab">Tetthet</a></li>
 
-                  <li class=""><a aria-expanded="false" href="#lwc" data-toggle="tab">Vanninnhold</a></li>
-                  <li class=""><a aria-expanded="false" href="#temperature" data-toggle="tab">Temperatur</a></li>
+                  <li class=""><a aria-expanded="false" href="#lwc{{ station }}" data-toggle="tab">Vanninnhold</a></li>
+                  <li class=""><a aria-expanded="false" href="#temperature{{ station }}" data-toggle="tab">Temperatur</a></li>
                 </ul>
 
-                <div id="myTabContent" class="tab-content">
+                <div id="seasonal_tab" class="tab-content">
 
-                  <div class="tab-pane fade" id="density">
+                  <div class="tab-pane fade" id="density{{ station }}">
                     <p><img src="{{url_density}}"  class="img-responsive"></p>
                   </div>
 
-                  <div class="tab-pane fade active in" id="graintype">
+                  <div class="tab-pane fade active in" id="graintype{{ station }}">
                     <p><img src="{{url_snowgraintype}}"  class="img-responsive"></p>
                   </div>
 
-                  <div class="tab-pane fade" id="lwc">
+                  <div class="tab-pane fade" id="lwc{{ station }}">
                     <p><img src="{{url_lwc}}" class="img-responsive"></p>
                   </div>
 
-                  <div class="tab-pane fade" id="temperature">
+                  <div class="tab-pane fade" id="temperature{{ station }}">
                     <p><img src="{{url_temperature}}"  class="img-responsive"></p>
                   </div>
                 </div>
