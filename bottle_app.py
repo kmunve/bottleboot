@@ -2,6 +2,7 @@
 from bottle import default_app, run, route, get, post, request, template, static_file, debug #, TEMPLATE_PATH
 from html_template import WeatherParameter
 import crocus
+from model.met_station_info import MetStation
 
 # Comment when in production
 debug(True)
@@ -51,7 +52,7 @@ def danger_level_html():
     return html
 
 
-@route('/crocus/')
+@route('/crocus')
 @get('/crocus/model')
 def region_form():
     station_dict = crocus.read_station_list()
@@ -72,9 +73,18 @@ def region_submit():
     crocus_result = []
     for station_id in station_dict[region]:
         url_vertprofile, url_snowgraintype, url_density, url_lwc, url_temperature = crocus.get_img_urls(station_id)
-        print url_density
+        ms = MetStation(station_id)
+        ms.get_station_info()
 
-        crocus_result.append(template('crocus_result', station=station_id, url_vertprofile=url_vertprofile, url_snowgraintype=url_snowgraintype, url_density=url_density, url_lwc=url_lwc, url_temperature=url_temperature))
+        crocus_result.append(template('crocus_result',
+                                      station_name=ms.name,
+                                      station_id=station_id,
+                                      url_gmap=ms.google_maps_url,
+                                      url_vertprofile=url_vertprofile,
+                                      url_snowgraintype=url_snowgraintype,
+                                      url_density=url_density,
+                                      url_lwc=url_lwc,
+                                      url_temperature=url_temperature))
 
     crocus_results = ""
     for result in crocus_result:
