@@ -5,7 +5,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
               % # in future maybe link to position of station in Google maps
-            <h3 class="panel-title">Modellert snødekke ved stasjon <a href="{{ url_gmap }}">{{ station_name }} ({{ station_id }})</a></h3>
+            <h3 class="panel-title">Modellert snødekke ved stasjon <a href="{{ url_gmap }}">{{ station_name }} (StNo: {{ station_id }}, {{station_elev}} moh)</a></h3>
           </div>
           <div class="panel-body">
 

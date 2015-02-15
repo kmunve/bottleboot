@@ -8,14 +8,12 @@
     Velg varslingsregion
     <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu">
-      <div class="input-group">
+  <ul class="dropdown-menu" role="menu">
     % for region in region_list:
     <li role="presentation">
-        <input name="region" class="form-control" type="submit" value="{{region}}">
+        <a href="/crocus/model/{{region}}">{{region}}</a>
     </li>
     % end
-      </div>
   </ul>
 </div>
 </form>

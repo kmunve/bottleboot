@@ -40,8 +40,8 @@ def get_ftp_content():
 
 def get_img_urls(station_id):
     """
-    Split file name and retrieve stationd id and station name and use it as a heading
-    Change web-page such that only the sations within a region are shown when chosen from drop-down menu.
+    Split file name and retrieve station id and station name and use it as a heading
+    Change web-page such that only the stations within a region are shown when chosen from drop-down menu.
 
     """
     # Read media folder content

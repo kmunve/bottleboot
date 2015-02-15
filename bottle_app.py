@@ -62,9 +62,9 @@ def region_form():
     return html
 
 
-@post('/crocus/model') # or @route('/login', method='POST')
-def region_submit():
-    region = request.forms.get('region')
+@route('/crocus/model/<region>')
+def region_via_url(region):
+
     station_dict = crocus.read_station_list()
     region_list = station_dict.keys()
 
@@ -79,6 +79,7 @@ def region_submit():
         crocus_result.append(template('crocus_result',
                                       station_name=ms.name,
                                       station_id=station_id,
+                                      station_elev=ms.masl,
                                       url_gmap=ms.google_maps_url,
                                       url_vertprofile=url_vertprofile,
                                       url_snowgraintype=url_snowgraintype,
