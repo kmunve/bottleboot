@@ -53,46 +53,43 @@ def danger_level_html():
 
 
 @route('/crocus')
-@get('/crocus/model')
-def region_form():
-    station_dict = crocus.read_station_list()
-    region_list = station_dict.keys()
-    crocus_form = template('crocus_form', region_list=region_list)
-    html = template('crocus_main', crocus_page=crocus_form)
-    return html
-
-
+@route('/crocus/model')
 @route('/crocus/model/<region>')
-def region_via_url(region):
+def region_via_url(region=None):
 
     station_dict = crocus.read_station_list()
     region_list = station_dict.keys()
 
     crocus_form = template('crocus_form', region_list=region_list)
 
-    crocus_result = []
-    for station_id in station_dict[region]:
-        url_vertprofile, url_snowgraintype, url_density, url_lwc, url_temperature = crocus.get_img_urls(station_id)
-        ms = MetStation(station_id)
-        ms.get_station_info()
+    try:
+        crocus_result = []
+        crocus_result.append(template("""<div class="page-header"><h1>{{region}}</h1></div>""", region=region))
+        for station_id in station_dict[region]:
+            url_vertprofile, url_snowgraintype, url_density, url_lwc, url_temperature = crocus.get_img_urls(station_id)
+            ms = MetStation(station_id)
+            ms.get_station_info()
 
-        crocus_result.append(template('crocus_result',
-                                      station_name=ms.name,
-                                      station_id=station_id,
-                                      station_elev=ms.masl,
-                                      url_gmap=ms.google_maps_url,
-                                      url_vertprofile=url_vertprofile,
-                                      url_snowgraintype=url_snowgraintype,
-                                      url_density=url_density,
-                                      url_lwc=url_lwc,
-                                      url_temperature=url_temperature))
+            crocus_result.append(template('crocus_result',
+                                          station_name=ms.name,
+                                          station_id=station_id,
+                                          station_elev=ms.masl,
+                                          url_gmap=ms.google_maps_url,
+                                          url_vertprofile=url_vertprofile,
+                                          url_snowgraintype=url_snowgraintype,
+                                          url_density=url_density,
+                                          url_lwc=url_lwc,
+                                          url_temperature=url_temperature))
 
-    crocus_results = ""
-    for result in crocus_result:
-        crocus_results += u"<p>{0}</p>".format(result)
+        crocus_results = ""
+        for result in crocus_result:
+            crocus_results += u"<p>{0}</p>".format(result)
 
-    crocus_page = u"<p>{0}</p>{1}".format(crocus_form, crocus_results)
-    html = template('crocus_main', crocus_page=crocus_page)
+        crocus_page = u"<p>{0}</p>{1}".format(crocus_form, crocus_results)
+        html = template('crocus_main', crocus_page=crocus_page)
+
+    except KeyError:
+        html = template('crocus_main', crocus_page=crocus_form)
 
     return html
 

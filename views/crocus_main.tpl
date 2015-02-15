@@ -24,10 +24,10 @@
                 </div>
 
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="model">Snødekkemodell <span class="sr-only">(current)</span></a></li>
-                    <li class="disabled"><a href="map">Kart</a></li>
-                    <li><a href="help">Hjelp</a></li>
-                    <li class="disabled"><a href="feedback">Tilbakemeldinger</a></li>
+                    <li class="active"><a href="/crocus/model">Snødekkemodell <span class="sr-only">(current)</span></a></li>
+                    <li class="disabled"><a href="/crocus/map">Kart</a></li>
+                    <li><a href="/crocus/help">Hjelp</a></li>
+                    <li class="disabled"><a href="/corcus/feedback">Tilbakemeldinger</a></li>
                 </ul>
 
               %#</div><!-- /.container-fluid -->
