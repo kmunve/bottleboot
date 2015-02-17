@@ -102,7 +102,7 @@ def crocus_help():
     return html
 
 # Uncomment when running on pythonanywhere
-# application = default_app()
+application = default_app()
 
 # Uncomment when running locally
-run(host='localhost', port=8080)
+# run(host='localhost', port=8080)

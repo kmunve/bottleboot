@@ -81,6 +81,6 @@ def get_img_urls(station_id):
 
 
 if __name__ == "__main__":
-    #img_files = get_ftp_content()
-    vp, sgt, den, lwc, temp = get_img_urls(61410)
-    print vp, sgt, den, lwc, temp
+    img_files = get_ftp_content()
+    #vp, sgt, den, lwc, temp = get_img_urls(61410)
+    #print vp, sgt, den, lwc, temp
