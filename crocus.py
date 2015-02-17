@@ -4,7 +4,7 @@ import os
 
 
 def read_station_list():
-    fid = open("./resources/station_list.js", "r")
+    fid = open("http://karsten.pythonanywhere.com/resources/station_list.js", "r")
     station_dict = json.load(fid)
     fid.close()
     return station_dict
