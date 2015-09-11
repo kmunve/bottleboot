@@ -1,5 +1,6 @@
 # A very simple Bottle Hello World app for you to get started with...
-from bottle import default_app, route, template, static_file, debug #, TEMPLATE_PATH
+import platform
+from bottle import default_app, route, template, static_file, debug, run #, TEMPLATE_PATH
 from html_template import WeatherParameter
 import crocus
 from model.met_station_info import MetStation
@@ -142,8 +143,10 @@ def crocus_help():
     html = template('crocus_main', crocus_page=crocus_page)
     return html
 
-# Uncomment when running on pythonanywhere
-application = default_app()
-
-# Uncomment when running locally
-# run(host='localhost', port=8080)
+if platform.system() == 'Windows':
+    # Uncomment when running locally
+    print 'Running locally on Windows'
+    run(host='localhost', port=8080)
+else:
+    # Uncomment when running on server, e.g. pythonanywhere
+    application = default_app()
