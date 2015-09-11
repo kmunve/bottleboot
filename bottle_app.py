@@ -47,6 +47,11 @@ def server_view(filename):
 def server_media(filename):
     return static_file(filename, root='/media/')
 
+
+@route('/resources/:path#.+#', name='static')
+def server_resources(path):
+    return static_file(path, root='resources')
+
 @route('/test')
 def test_html():
     wp = WeatherParameter()
@@ -57,6 +62,11 @@ def test_html():
 @route('/base')
 def base_html():
     html = template('base', base="Base test.")
+    return html
+
+@route('/jqplot')
+def jqplot_html():
+    html = template('jqplot')
     return html
 
 @route('/eaws')
@@ -142,6 +152,11 @@ def crocus_help():
     crocus_page = template('crocus_help')
     html = template('crocus_main', crocus_page=crocus_page)
     return html
+
+
+########################
+### Start the server ###
+########################
 
 if platform.system() == 'Windows':
     # Uncomment when running locally
