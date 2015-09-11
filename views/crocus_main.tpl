@@ -2,6 +2,8 @@
 <html lang="no-nb">
 
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
         <LINK href="http://karsten.pythonanywhere.com/views/simplex.css" rel="stylesheet" type="text/css">
         <style>
             body {

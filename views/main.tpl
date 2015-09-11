@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>{{title}} // Bottle (Python) Bootstrap</title>
+	<title>Bottle (Python) Bootstrap</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
 
 	<!--CSS-START-->
-	<LINK href="http://karsten.pythonanywhere.com/views/bootstrap.css" rel="stylesheet" type="text/css">
+	<LINK href="http://karsten.pythonanywhere.com/views/simplex.css" rel="stylesheet" type="text/css">
 	<!--CSS-END-->
 
 	<!--[if lt IE 9]>
@@ -82,7 +82,7 @@
 				<!-- CONTENT -->
 				<div class="row-fluid">
 					<div class="span12" id="contentContainer">
-						%include
+						Include something here.
 					</div>
 				</div>
 				<!-- END-CONTENT -->

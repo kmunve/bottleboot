@@ -4,7 +4,7 @@ import os
 
 
 def read_station_list():
-    fid = open("http://karsten.pythonanywhere.com/resources/station_list.js", "r")
+    fid = open(r"/home/karsten/mysite/resources/station_list.js", "r")
     station_dict = json.load(fid)
     fid.close()
     return station_dict
@@ -45,7 +45,7 @@ def get_img_urls(station_id):
 
     """
     # Read media folder content
-    files = os.listdir(r".\media\m_crocus")
+    files = os.listdir(r"/home/karsten/mysite/media/m_crocus")
 
     # Compile main url
     base_url = r"http://karsten.pythonanywhere.com/media/m_crocus/"

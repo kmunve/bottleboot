@@ -1,0 +1,6 @@
+# Images and documents
+*.png
+*.pdf
+
+# Compiled python files
+*.pyc

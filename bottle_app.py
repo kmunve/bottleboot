@@ -1,5 +1,5 @@
 # A very simple Bottle Hello World app for you to get started with...
-from bottle import default_app, run, route, get, post, request, template, static_file, debug #, TEMPLATE_PATH
+from bottle import default_app, route, template, static_file, debug #, TEMPLATE_PATH
 from html_template import WeatherParameter
 import crocus
 from model.met_station_info import MetStation
@@ -16,6 +16,25 @@ See http://stackoverflow.com/questions/11744941/bottle-multiple-template-variabl
 @route('/')
 def hello_world():
     return template('main')#, 'Dette er en test server. Spoer Karsten om hjelp!')
+
+@route('/plotly')
+def plotly_test():
+    html = """<!doctype html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+    <title>Plotly demo plot</title>
+  </head>
+  <body>
+    <h2>Plotly demo plot</h2>
+    <div>
+      <iframe width="800" height="600" frameborder="0" seamless="seamless" scrolling="no" src="https://plot.ly/~kmunve/28.embed?width=600&height=400"></iframe>
+    </div>
+  </body>
+</html>
+
+    """
+    return html
 
 
 @route('/views/<filename>')
@@ -37,6 +56,28 @@ def test_html():
 @route('/base')
 def base_html():
     html = template('base', base="Base test.")
+    return html
+
+@route('/eaws')
+def eaws_html():
+    html = """<!doctype html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+    <title>EAWS documents</title>
+  </head>
+  <body>
+    <h1>Open access to the EAWS documents</h1>
+    <p>By clicking on the EAWS documents button you get read access to the OneDrive folders.</p>
+
+    <div>
+      <iframe src="https://onedrive.live.com/embed?cid=C807C4B4B34B642F&resid=C807C4B4B34B642F%21163&authkey=AODw-m5jc4P2HSc" width="165" height="128" frameborder="0" scrolling="no"></iframe>
+    </div>
+
+  </body>
+</html>
+
+    """
     return html
 
 @route('/dangerlevel')

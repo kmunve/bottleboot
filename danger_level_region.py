@@ -16,7 +16,8 @@ def dl_request(region_id, start_date, end_date):
     requests regional avalanche danger levels per region from api.nve.no.
     Plots the data.
     """
-    url = "http://api01.nve.no/hydrology/forecast/avalanche/v2.0.1/api/AvalancheWarningByRegion/Simple/{0}/1/{1}/{2}".format(region_id, start_date, end_date)
+    url = "http://api01.nve.no/hydrology/forecast/avalanche/v2.0.2/api/AvalancheWarningByRegion/Simple/{0}/1/{1}/{2}".format(region_id, start_date, end_date)
+    print url
     p = requests.get(url)
     data = p.json()
 
@@ -60,14 +61,14 @@ def __daily_update():
     tmrw = today+td
     end_date = "{0}-{1}-{2}".format(tmrw.year, tmrw.month, tmrw.day)
 
-    for i in range(6, 33):
+    for i in range(6, 34):
         dl_request(i, start_date, end_date)
 
 
 def specific_period(start_date, end_date):
-    for i in range(6, 30):
+    for i in range(6, 34):
         dl_request(i, start_date, end_date)
 
 if __name__ == "__main__":
-    #specific_period("2013-04-01", "2014-04-08")
+    #specific_period("2014-12-02", "2015-05-31")
     __daily_update()
