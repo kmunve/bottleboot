@@ -1,6 +1,7 @@
 import ftplib
 import json
 import os
+from bottle import template
 
 
 def read_station_list():
@@ -79,6 +80,13 @@ def get_img_urls(station_id):
 
     return url_vertprofile, url_snowgraintype, url_density, url_lwc, url_temperature
 
+
+# Bottlepy function
+def bp_crocus_help():
+
+    crocus_page = template('crocus_help')
+    html = template('crocus_main', crocus_page=crocus_page)
+    return html
 
 if __name__ == "__main__":
     img_files = get_ftp_content()

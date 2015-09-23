@@ -120,6 +120,7 @@ def danger_level_html():
     return html
 
 
+# TODO: move method to crocus.py
 @route('/crocus')
 @route('/crocus/model')
 @route('/crocus/model/<region>')
@@ -164,10 +165,7 @@ def region_via_url(region=None):
 
 @route('/crocus/help')
 def crocus_help():
-
-    crocus_page = template('crocus_help')
-    html = template('crocus_main', crocus_page=crocus_page)
-    return html
+    return crocus.bp_crocus_help()
 
 
 ########################
