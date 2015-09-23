@@ -14,9 +14,35 @@ debug(True)
 See http://stackoverflow.com/questions/11744941/bottle-multiple-template-variables
 """
 
+############
+### Root ###
+############
+
 @route('/')
 def hello_world():
     return template('main')#, 'Dette er en test server. Spoer Karsten om hjelp!')
+
+###########################
+### Set up static files ###
+###########################
+
+@route('/views/<filename>')
+def server_view(filename):
+    return static_file(filename, root='/views/')
+
+
+@route('/media/<filename>')
+def server_media(filename):
+    return static_file(filename, root='/media/')
+
+
+@route('/resources/:path#.+#', name='static')
+def server_resources(path):
+    return static_file(path, root='resources')
+
+######################
+### Set up routing ###
+######################
 
 @route('/plotly')
 def plotly_test():
@@ -38,20 +64,6 @@ def plotly_test():
     return html
 
 
-@route('/views/<filename>')
-def server_view(filename):
-    return static_file(filename, root='/views/')
-
-
-@route('/media/<filename>')
-def server_media(filename):
-    return static_file(filename, root='/media/')
-
-
-@route('/resources/:path#.+#', name='static')
-def server_resources(path):
-    return static_file(path, root='resources')
-
 @route('/test')
 def test_html():
     wp = WeatherParameter()
@@ -59,15 +71,18 @@ def test_html():
     html = template('weather2', wplist=wplist)
     return html
 
+
 @route('/base')
 def base_html():
     html = template('base', base="Base test.")
     return html
 
+
 @route('/jqplot')
 def jqplot_html():
     html = template('jqplot')
     return html
+
 
 @route('/eaws')
 def eaws_html():
@@ -90,6 +105,7 @@ def eaws_html():
 
     """
     return html
+
 
 @route('/dangerlevel')
 def danger_level_html():

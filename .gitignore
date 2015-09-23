@@ -16,3 +16,6 @@ $RECYCLE.BIN/
 
 # Compiled python files
 *.pyc
+
+# PyCharm folders
+.idea
