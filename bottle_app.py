@@ -71,6 +71,10 @@ def test_html():
     html = template('weather2', wplist=wplist)
     return html
 
+@route('/test/idag')
+def idag_html():
+    html = template('idag')
+    return html
 
 @route('/base')
 def base_html():
