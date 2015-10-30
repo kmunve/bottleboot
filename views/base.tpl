@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="no-nb">
-
 <head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <!-- <LINK href="http://karsten.pythonanywhere.com/views/flatly.min.css" rel="stylesheet" type="text/css"> -->
-  <LINK href="http://bootswatch.com/cosmo/bootstrap.min.css" rel="stylesheet" type="text/css">
-
+  <link href="http://bootswatch.com/cosmo/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
-
 <body>
+
+<div class="container">
+
+
+
+
 
 <div class="navbar navbar-default">
   <div class="navbar-header">
@@ -24,7 +34,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="#">Alta</a></li>
-          <li><a href="#">Kåfjord</a></li>
+          <li><a href="#">KÃ¥fjord</a></li>
           <li><a href="#">Lyngen</a></li>
           <li class="divider"></li>
           <li class="dropdown-header">Med flere</li>
@@ -60,7 +70,7 @@
     <li><a href="/test/idag">I dag</a></li>
     <li><a href="#">I morgen</a></li>
     <li><a href="#">Overimorgen</a></li>
-    <li><a href="#">Siste 3 døgn</a></li>
+    <li><a href="#">Siste 3 dÃ¸gn</a></li>
   </ul>
 </nav>
 
@@ -68,7 +78,7 @@
 {{!base}}
 
 </div>
-
+</div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
